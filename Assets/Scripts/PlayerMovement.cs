@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class PlayerMovementTutorial : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
+    static public bool dialogue = false;
+
     [Header("Movement")]
     public float moveSpeed;
 
@@ -60,7 +62,10 @@ public class PlayerMovementTutorial : MonoBehaviour
 
     private void FixedUpdate()
     {
-        MovePlayer();
+        if (!dialogue)
+        {
+            MovePlayer();
+        }
     }
 
     private void MyInput()
