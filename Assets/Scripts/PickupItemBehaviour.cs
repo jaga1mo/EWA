@@ -1,38 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
-public class NPCBehaviour : MonoBehaviour
+public class PickupItemBehaviour : MonoBehaviour
 {
-    [SerializeField] private TMP_Text textLabel;
-    [SerializeField] private RawImage image;
-    private bool PlayerInRange = false;
-    public Dialogue dialogue;
+    [SerializeField] private string Item;
+    [SerializeField] private int Amount;
 
+    private bool PlayerInRange = false;
     // Start is called before the first frame update
-    //void Start()
-    //{
+    void Start()
+    {
         
-    //}
+    }
 
     // Update is called once per frame
     void Update()
     {
         if (PlayerInRange && Input.GetKeyDown(KeyCode.E) && !PlayerMovement.dialogue)
         {
-            PlayerMovement.dialogue = true;
-            DialogueUI.DisplayDialogue(dialogue, textLabel, image);
+            InventoryController.ObtainItem(Item, Amount);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.name == "PlayerObj")
+        if (other.name == "PlayerObj")
         {
             PlayerInRange = true;
-            PromptUI.DisplayPrompt("E: Talk");
+            PromptUI.DisplayPrompt("E: Pick up the item");
         }
     }
 
