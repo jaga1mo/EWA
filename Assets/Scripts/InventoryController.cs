@@ -79,7 +79,7 @@ public class InventoryController : MonoBehaviour
         {
             if (Inventory[i].name == itemName)
             {
-                wandUses++;
+                wandUses += i+1;
                 Inventory[i].amount--;
                 i += Inventory.Count;
             }
