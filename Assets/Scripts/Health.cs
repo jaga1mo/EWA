@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-    public object player;
+    public string player;
     public int maxHealth = 10;
     public int currentHealth;
     // Start is called before the first frame update
     void Start()
     {
+        gameObject.SetActive(true);
         currentHealth = maxHealth;
         player = gameObject.tag;
     }
@@ -19,12 +20,13 @@ public class Health : MonoBehaviour
         if (currentHealth <= 0)
         {
             currentHealth = 0;
-            if(player.ToString() == "Player")
+            if(player == "Player")
             {
                 print("Player died");
             }
-            if (player.ToString() == "Enemy")
+            if (player == "Enemy")
             {
+                gameObject.SetActive(false);
                 print("Enemy killed");
             }
 
