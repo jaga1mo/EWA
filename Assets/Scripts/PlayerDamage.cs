@@ -47,7 +47,7 @@ public class PlayerDamage : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            print(other.gameObject.name + " entered attack range");
+            //print(other.gameObject.name + " entered attack range");
             InRange.Add(other);
         }
     }
@@ -56,7 +56,7 @@ public class PlayerDamage : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            print(other.gameObject.name + " left attack range");
+            //print(other.gameObject.name + " left attack range");
             InRange.Remove(other);
         }
     }
@@ -73,7 +73,7 @@ public class PlayerDamage : MonoBehaviour
         }
     }
 
-    void HealSelf (int heal)
+    void HealSelf(int heal)
     {
         playerHealth.TakeDamage(-1 * heal);
     }
