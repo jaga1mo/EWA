@@ -11,7 +11,7 @@ public class Health : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
-        player = gameObject.name;
+        player = gameObject.tag;
     }
     public void TakeDamage(int amount)
     {
@@ -23,9 +23,9 @@ public class Health : MonoBehaviour
             {
                 print("Player died");
             }
-            if (player.ToString() == "Rat")
+            if (player.ToString() == "Enemy")
             {
-                print("Rat killed");
+                print("Enemy killed");
             }
 
         }
