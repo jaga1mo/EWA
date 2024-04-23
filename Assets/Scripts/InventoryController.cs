@@ -53,7 +53,7 @@ public class InventoryController : MonoBehaviour
         {
             if(Inventory[i].name == itemName)
             {
-                Inventory[i].amount++;
+                Inventory[i].amount += amount;
                 //print("Item " + itemName + " added " + amount + " times");
                 i += Inventory.Count;
             }

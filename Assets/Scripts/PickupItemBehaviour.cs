@@ -6,12 +6,13 @@ public class PickupItemBehaviour : MonoBehaviour
 {
     [SerializeField] private string Item;
     [SerializeField] private int Amount;
+    [SerializeField] private GameObject ItemObject;
 
     private bool PlayerInRange = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+        ItemObject.SetActive(true);
     }
 
     // Update is called once per frame
@@ -20,6 +21,8 @@ public class PickupItemBehaviour : MonoBehaviour
         if (PlayerInRange && Input.GetKeyDown(KeyCode.E) && !PlayerMovement.dialogue)
         {
             InventoryController.ObtainItem(Item, Amount);
+            PromptUI.DeletePrompt();
+            ItemObject.SetActive(false);
         }
     }
 
