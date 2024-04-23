@@ -75,6 +75,10 @@ public class InventoryController : MonoBehaviour
     public static void RepairWand(string itemName)
     {
         int wandUses = int.Parse(wandLabelL.text);
+        if (wandUses > 0)
+        {
+            return;
+        }
         for (int i = 0; i < Inventory.Count; i++)
         {
             if (Inventory[i].name == itemName)
