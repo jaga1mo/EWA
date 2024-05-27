@@ -17,6 +17,17 @@ public static class SaveSystem
         formatter.Serialize(stream, data);
         stream.Close();
     }
+    public static void SavePlayer2(Health player)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/player.save.backup";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        PlayerData data = new PlayerData(player);
+
+        formatter.Serialize(stream, data);
+        stream.Close();
+    }
 
     public static PlayerData LoadPlayer(Health player)
     {
@@ -43,6 +54,17 @@ public static class SaveSystem
             //return null;
             return data;
         }
+    }
+    public static PlayerData LoadPlayer2(Health player)
+    {
+        string path = Application.persistentDataPath + "/player.save.backup";
+        BinaryFormatter formatter = new BinaryFormatter();
+        FileStream stream = new FileStream(path, FileMode.Open);
+
+        PlayerData data = formatter.Deserialize(stream) as PlayerData;
+        stream.Close();
+
+        return data;
     }
     public static void SaveEnemy(Health player)
     {
@@ -89,6 +111,29 @@ public static class SaveSystem
             return data1;
         }
     }
+    public static void SaveEnemy2(Health player)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/enemy.save.backup";
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        EnemyData data = new EnemyData(player);
+
+        formatter.Serialize(stream, data);
+        stream.Close();
+    }
+
+    public static EnemyData LoadEnemy2(Health player)
+    {
+        string path = Application.persistentDataPath + "/enemy.save.backup";
+        BinaryFormatter formatter = new BinaryFormatter();
+        FileStream stream = new FileStream(path, FileMode.Open);
+
+        EnemyData data = formatter.Deserialize(stream) as EnemyData;
+        stream.Close();
+
+        return data;
+    }
     public static void SaveItem()
     {
         BinaryFormatter formatter = new BinaryFormatter();
@@ -129,5 +174,28 @@ public static class SaveSystem
             //return null;
             return data1;
         }
+    }
+    public static void SaveItem2()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/item.save.backup";
+        FileStream stream = new FileStream(path, FileMode.Create);
+        
+        ItemsData data = new ItemsData();
+
+        formatter.Serialize(stream, data);
+        stream.Close();
+    }
+
+    public static ItemsData LoadItem2()
+    {
+        string path = Application.persistentDataPath + "/item.save.backup";
+        BinaryFormatter formatter = new BinaryFormatter();
+        FileStream stream = new FileStream(path, FileMode.Open);
+
+        ItemsData data = formatter.Deserialize(stream) as ItemsData;
+        stream.Close();
+
+        return data;
     }
 }

@@ -5,6 +5,7 @@ using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public GameObject FootstepsSound;
     public int maxStamina = 2000;
     public int currentStamina = 0;
     public float staminaCooldown = 0f;
@@ -45,6 +46,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        FootstepsSound.SetActive(false);
         currentStamina = maxStamina;
         walkSpeed = moveSpeed;
         sprintSpeed = moveSpeed*1.5f;
@@ -98,7 +100,17 @@ public class PlayerMovement : MonoBehaviour
     {
         horizontalInput = Input.GetAxisRaw("Horizontal");
         verticalInput = Input.GetAxisRaw("Vertical");
-
+        if(horizontalInput != 0 || verticalInput != 0)
+        {
+            if(FootstepsSound.activeSelf != true)
+            {
+                FootstepsSound.SetActive(true);
+            }
+        }
+        else
+        {
+            FootstepsSound.SetActive(false);
+        }
         // when to jump
         if(Input.GetKey(jumpKey) && readyToJump && grounded && currentStamina>0)
         {

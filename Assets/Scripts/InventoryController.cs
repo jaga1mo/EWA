@@ -71,6 +71,7 @@ public class InventoryController : MonoBehaviour
                 Inventory[i].amount += amount;
                 //print("Item " + itemName + " added " + amount + " times");
                 i += Inventory.Count;
+                
             }
         }
     }

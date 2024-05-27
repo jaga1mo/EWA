@@ -18,9 +18,13 @@ public class PlayerDamage : MonoBehaviour
     [SerializeField] private ParticleSystem VFX2;
     public int duration = 0;
     public int duration2 = 0;
+    public GameObject AttackSound;
+    public GameObject HealSound;
     // Start is called before the first frame update
     void Start()
     {
+        AttackSound.SetActive(false);
+        HealSound.SetActive(false);
         VFX.Stop();
         VFX2.Stop();
     }
@@ -49,6 +53,11 @@ public class PlayerDamage : MonoBehaviour
             int wandUses = int.Parse(wandLabel.text);
             if (wandUses > 0)
             {
+                if(AttackSound.activeSelf == true)
+                {
+                    AttackSound.SetActive(false);
+                }
+                AttackSound.SetActive(true);
                 DealDamage(damage);
                 wandUses--;
                 wandLabel.text = wandUses.ToString();
@@ -59,6 +68,11 @@ public class PlayerDamage : MonoBehaviour
             int wandUses = int.Parse(wandLabel.text);
             if (wandUses > 0)
             {
+                if(HealSound.activeSelf == true)
+                {
+                    HealSound.SetActive(false);
+                }
+                HealSound.SetActive(true);
                 HealSelf(heal);
                 wandUses--;
                 wandLabel.text = wandUses.ToString();

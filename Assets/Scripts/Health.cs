@@ -28,6 +28,8 @@ public class Health : MonoBehaviour
                 currentHealth = 0;
                 gameObject.SetActive(false);
             }
+            Tick2();
+	        InvokeRepeating("Tick2", 60, 600);
             renderer = GetComponent<Renderer>();
             newMaterials = renderer.materials;
             for (var i = 0; i < renderer.materials.Length; i++)
@@ -44,8 +46,16 @@ public class Health : MonoBehaviour
             isRat = false;
             LoadPlayer();
             SavePlayer();
+            Tick1();
+	        InvokeRepeating("Tick1", 60, 600);
         }
         
+    }
+    public void Tick1() {
+	    SaveSystem.SavePlayer2(this);
+    }
+    public void Tick2() {
+	    SaveSystem.SaveEnemy2(this);
     }
     void Update()
     {
@@ -107,6 +117,20 @@ public class Health : MonoBehaviour
             if(player == "Player")
             {
                 print("Player died");
+                
+                PlayerData data1 = SaveSystem.LoadPlayer2(this);
+                InventoryController.LoadInventory(data1.inventory);
+                currentHealth = data1.health;
+                Vector3 position;
+                position.x = data1.position[0];
+                position.y = data1.position[1];
+                position.z = data1.position[2];
+                transform.position = position;
+                SavePlayer();
+                data = SaveSystem.LoadEnemy2(this);
+                SaveSystem.SaveEnemy(this);
+                ItemsData data3 = SaveSystem.LoadItem2();
+                SaveSystem.SaveItem();
             }
             if (player == "Enemy")
             {
