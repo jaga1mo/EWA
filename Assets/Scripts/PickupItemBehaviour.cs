@@ -23,6 +23,7 @@ public class PickupItemBehaviour : MonoBehaviour
             InventoryController.ObtainItem(Item, Amount);
             PromptUI.DeletePrompt();
             ItemObject.SetActive(false);
+            //PlayerData.items[]
         }
     }
 
