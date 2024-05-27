@@ -9,6 +9,8 @@ public class Pause : MonoBehaviour
 
     void Start()
     {
+        PlayerMovement.dialogue = false;
+        Time.timeScale = 1;
         pauseMenu.SetActive(false);
     }
 
@@ -34,8 +36,8 @@ public class Pause : MonoBehaviour
         Time.timeScale = 1;
     }
 
-    void toMainMenu()
+    public void toMainMenu()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadSceneAsync("MainMenu", LoadSceneMode.Single);
     }
 }
