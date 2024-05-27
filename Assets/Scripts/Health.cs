@@ -21,6 +21,13 @@ public class Health : MonoBehaviour
         player = gameObject.tag;
         if (player == "Enemy")
         {
+			EnemyData data = SaveSystem.LoadEnemy(this);
+            int id = GetEnemyID(gameObject.name);
+            if(data.enemy[id])
+            {
+                currentHealth = 0;
+                gameObject.SetActive(false);
+            }
             renderer = GetComponent<Renderer>();
             newMaterials = renderer.materials;
             for (var i = 0; i < renderer.materials.Length; i++)
@@ -30,13 +37,6 @@ public class Health : MonoBehaviour
             for (var i = 0; i < renderer.materials.Length; i++)
             {
                 newMaterials[i].color = Color.red;
-            }
-			EnemyData data = SaveSystem.LoadEnemy(this);
-            int id = GetEnemyID(gameObject.name);
-            if(data.enemy[id])
-            {
-                currentHealth = 0;
-                gameObject.SetActive(false);
             }
         }
 		if(player == "Player")

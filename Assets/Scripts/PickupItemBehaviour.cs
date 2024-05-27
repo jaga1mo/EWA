@@ -13,6 +13,13 @@ public class PickupItemBehaviour : MonoBehaviour
     void Start()
     {
         ItemObject.SetActive(true);
+        ItemsData data = SaveSystem.LoadItem();
+        int id = data.GetItemID(gameObject.transform.parent.name);
+        print(gameObject.transform.parent.name + " " + data.items[id]);
+        if(data.items[id])
+        {
+            ItemObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -20,10 +27,14 @@ public class PickupItemBehaviour : MonoBehaviour
     {
         if (PlayerInRange && Input.GetKeyDown(KeyCode.E) && !PlayerMovement.dialogue)
         {
+            ItemsData data = SaveSystem.LoadItem();
             InventoryController.ObtainItem(Item, Amount);
             PromptUI.DeletePrompt();
             ItemObject.SetActive(false);
-            //PlayerData.items[]
+            int id = data.GetItemID(gameObject.transform.parent.name);
+            data.SavePickedItem(id);
+            SaveSystem.SaveItem();
+            print("safas");
         }
     }
 

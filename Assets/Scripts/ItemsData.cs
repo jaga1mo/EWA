@@ -7,9 +7,10 @@ public class ItemsData
 {
     public bool[] items = new bool[5];
     
-    public ItemsData (Health player)
+    public ItemsData ()
     {
         GameObject father = GameObject.Find("/Items");
+        
         List<GameObject> enemy = GetChildren(father);
     }
 
@@ -26,14 +27,24 @@ public class ItemsData
         foreach (Transform child in parent.transform)
         {
             children.Add(child.gameObject);
-            Health enemyHealthScript = child.gameObject.GetComponent<Health>();
-            if(enemyHealthScript.currentHealth <= 0)
+            if(!child.gameObject.activeSelf)
             {
-                int id = enemyHealthScript.GetEnemyID(child.gameObject.name);
+                int id = GetItemID(child.gameObject.name);
                 items[id] = true;
             }
         }
-
         return children;
+    }
+    public int GetItemID(string name)
+    {
+        switch (name) 
+        {
+            case "Item1":return 0;
+            case "Item2":return 1;
+            case "Item3":return 2;
+            case "Item4":return 3;
+            case "Item5":return 4;
+        }
+        return 4;
     }
 }

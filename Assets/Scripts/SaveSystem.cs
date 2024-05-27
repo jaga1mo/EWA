@@ -69,15 +69,63 @@ public static class SaveSystem
         }
         else
         {
-            SaveEnemy(player);
+            //SaveEnemy(player);
             BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream1 = new FileStream(path, FileMode.Create);
+            EnemyData data1 = new EnemyData(player);
+            bool[] newEnemy = new bool[29];
+            data1.enemy = newEnemy;
+            formatter.Serialize(stream1, data1);
+            stream1.Close();
+
             FileStream stream = new FileStream(path, FileMode.Open);
 
             EnemyData data = formatter.Deserialize(stream) as EnemyData;
             stream.Close();
             //Debug.LogError("Save file not found in " + path);
             //return null;
+            return data1;
+        }
+    }
+    public static void SaveItem()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Application.persistentDataPath + "/item.save";
+        FileStream stream = new FileStream(path, FileMode.Create);
+        
+        ItemsData data = new ItemsData();
+
+        formatter.Serialize(stream, data);
+        stream.Close();
+    }
+
+    public static ItemsData LoadItem()
+    {
+        string path = Application.persistentDataPath + "/item.save";
+        if(File.Exists(path))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            FileStream stream = new FileStream(path, FileMode.Open);
+
+            ItemsData data = formatter.Deserialize(stream) as ItemsData;
+            stream.Close();
+
             return data;
+        }
+        else
+        {
+            //SaveItem();
+            BinaryFormatter formatter = new BinaryFormatter();
+
+            FileStream stream1 = new FileStream(path, FileMode.Create);
+            ItemsData data1 = new ItemsData();
+            bool[] newitems = new bool[5];
+            data1.items = newitems;
+            formatter.Serialize(stream1, data1);
+            stream1.Close();
+            //Debug.LogError("Save file not found in " + path);
+            //return null;
+            return data1;
         }
     }
 }

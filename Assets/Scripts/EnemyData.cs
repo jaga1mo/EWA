@@ -10,8 +10,12 @@ public class EnemyData
     
     public EnemyData (Health player)
     {
+        for(int i =0; i < 29; i++)
+        {
+            enemy[i] = false;
+        }
         GameObject father = GameObject.Find("/Enemies");
-        List<GameObject> enemy = GetChildren(father);
+        List<GameObject> enemys = GetChildren(father);
     }
 
     public void SaveEnemyKill(int id)
