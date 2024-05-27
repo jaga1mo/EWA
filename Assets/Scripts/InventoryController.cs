@@ -49,6 +49,19 @@ public class InventoryController : MonoBehaviour
         }
     }
 
+    public static List<Item> GetInventory()
+    {
+        return Inventory;
+    }
+
+    public static void LoadInventory(int[] inventory)
+    {
+        for(int i = 0; i<8; i++)
+        {
+            Inventory[i].amount = inventory[i];
+        }
+    }
+
     public static void ObtainItem(string itemName, int amount)
     {
         for (int i = 0; i < Inventory.Count; i++)
