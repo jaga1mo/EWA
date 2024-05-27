@@ -33,7 +33,7 @@ public class InventoryController : MonoBehaviour
     {
         if (invWindow.activeSelf)
         {
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R) || Input.GetKeyDown(KeyCode.Escape))
             {
                 PlayerMovement.dialogue = false;
                 invWindow.SetActive(false);

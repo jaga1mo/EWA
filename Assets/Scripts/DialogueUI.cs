@@ -45,14 +45,24 @@ public class DialogueUI : MonoBehaviour
                 displayLabel.text = displaying.dialogue[index];
             }
             catch { }
+
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                QuitDialogue();
+            }
         }
         else
         {
-            index = 0;
-            box.enabled = false;
-            displayLabel.text = "";
-            PlayerMovement.dialogue = false;
-            box = null;
+            QuitDialogue();
         }
+    }
+    void QuitDialogue()
+    {
+        index = 0;
+        left = 0;
+        box.enabled = false;
+        displayLabel.text = "";
+        PlayerMovement.dialogue = false;
+        box = null;
     }
 }
