@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
   - Hi!
-  - I am a ghost.
+  - You've been sentenced to rot in the dungeon huh?
+  - There isn't really much hope for you here...
+  - 'If you find something shiny, you''ll be able to find it in your Inventory '
   - Ha ha you will die just like me.
