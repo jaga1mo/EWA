@@ -9,18 +9,41 @@ public class PlayerDamage : MonoBehaviour
 
     [SerializeField] private Health playerHealth;
     [SerializeField] private TMP_Text wandLabel;
+    public int maxDuration = 150;
+    public int maxDuration2 = 150;
     public int damage = 1;
     public int heal = 2;
-    List<Collider> InRange = new List<Collider> ();
+    List<Collider> InRange = new List<Collider>();
+    [SerializeField] private ParticleSystem VFX;
+    [SerializeField] private ParticleSystem VFX2;
+    public int duration = 0;
+    public int duration2 = 0;
     // Start is called before the first frame update
     void Start()
     {
-        
+        VFX.Stop();
+        VFX2.Stop();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (duration > 0)
+        {
+            duration--;
+            if (duration <= 0)
+            {
+                VFX.Stop();
+            }
+        }
+        if (duration2 > 0)
+        {
+            duration2--;
+            if (duration2 <= 0)
+            {
+                VFX2.Stop();
+            }
+        }
         if (Input.GetMouseButtonDown(0) && !PlayerMovement.dialogue)
         {
             int wandUses = int.Parse(wandLabel.text);
@@ -61,9 +84,11 @@ public class PlayerDamage : MonoBehaviour
         }
     }
 
-    void DealDamage (int damage)
+    void DealDamage(int damage)
     {
-        foreach(var coll in InRange)
+        VFX.Play();
+        duration = maxDuration;
+        foreach (var coll in InRange)
         {
             Health enemyHealthScript = coll.GetComponent<Health>();
             if (enemyHealthScript != null)
@@ -75,6 +100,8 @@ public class PlayerDamage : MonoBehaviour
 
     void HealSelf(int heal)
     {
+        VFX2.Play();
+        duration2 = maxDuration2;
         playerHealth.TakeDamage(-1 * heal);
     }
 }

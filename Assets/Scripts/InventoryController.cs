@@ -4,6 +4,8 @@ using UnityEngine;
 using static InventoryController;
 using UnityEngine.UI;
 using TMPro;
+using System.IO;
+using System;
 
 public class InventoryController : MonoBehaviour
 {
@@ -37,9 +39,9 @@ public class InventoryController : MonoBehaviour
                 invWindow.SetActive(false);
             }
         }
-        else
+        else if (!PlayerMovement.dialogue)
         {
-            if (Input.GetKeyDown(KeyCode.R) && !PlayerMovement.dialogue)
+            if (Input.GetKeyDown(KeyCode.R))
             {
                 PlayerMovement.dialogue = true;
                 invWindow.SetActive(true);

@@ -23,31 +23,36 @@ public class DialogueUI : MonoBehaviour
         }
     }
 
-    private void Update()
+    void Update()
     {
         if(box != null)
         {
-            if (left > 0)
+            Dialogue();
+        }
+    }
+    void Dialogue()
+    {
+        if (left > 0)
+        {
+            box.enabled = true;
+            if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E))
             {
-                box.enabled = true;
-                if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E))
-                {
-                    left--;
-                    index++;
-                }
-                try
-                {
-                    displayLabel.text = displaying.dialogue[index];
-                }
-                catch { }           
+                left--;
+                index++;
             }
-            else
+            try
             {
-                index = 0;
-                box.enabled = false;
-                displayLabel.text = "";
-                PlayerMovement.dialogue = false;
+                displayLabel.text = displaying.dialogue[index];
             }
+            catch { }
+        }
+        else
+        {
+            index = 0;
+            box.enabled = false;
+            displayLabel.text = "";
+            PlayerMovement.dialogue = false;
+            box = null;
         }
     }
 }

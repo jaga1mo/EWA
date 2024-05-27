@@ -5,6 +5,12 @@ using TMPro;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public int maxStamina = 2000;
+    public int currentStamina = 0;
+    public float staminaCooldown = 0f;
+    public float midStaminaCooldown = 0.5f;
+    public float maxStaminaCooldown = 3f;
+
     static public bool dialogue = false;
 
     [Header("Movement")]
@@ -39,6 +45,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        currentStamina = maxStamina;
+        walkSpeed = moveSpeed;
+        sprintSpeed = moveSpeed*1.5f;
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
 
@@ -47,6 +56,23 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        if(staminaCooldown <= 0f && !Input.GetKey(jumpKey) && currentStamina < maxStamina)
+        {
+            moveSpeed = walkSpeed;
+            currentStamina++;
+        }
+        if (Input.GetKey(jumpKey) && currentStamina > 0)
+        {
+            moveSpeed = sprintSpeed;
+            currentStamina--;
+            staminaCooldown = midStaminaCooldown;
+        }
+        if (currentStamina <= 0 && staminaCooldown <=0)
+        {
+            moveSpeed = walkSpeed;
+            staminaCooldown = maxStaminaCooldown;
+        }
+        staminaCooldown -= Time.deltaTime;
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.1f, whatIsGround);
 
@@ -74,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
         verticalInput = Input.GetAxisRaw("Vertical");
 
         // when to jump
-        if(Input.GetKey(jumpKey) && readyToJump && grounded)
+        if(Input.GetKey(jumpKey) && readyToJump && grounded && currentStamina>0)
         {
             readyToJump = false;
 
