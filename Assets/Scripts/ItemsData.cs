@@ -46,7 +46,7 @@ public class ItemsData
             case "Item5":return 4;
             /*case "Item6":return 5;
             case "Item7":return 6;*/
-            case "Item8":return 7;
+            case "Item8":return 5;
         }
         return 0;
     }

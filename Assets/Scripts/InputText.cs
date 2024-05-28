@@ -88,6 +88,7 @@ public class InputText : MonoBehaviour
                 print("Aktyvus");
             }
             Solved = true;
+            inputField.text = "";
             Prompt = "your knowledge triumphs";
             PlayerMovement.dialogue = false;
             inputWindow.SetActive(false);

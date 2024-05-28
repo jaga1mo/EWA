@@ -142,7 +142,7 @@ public class Health : MonoBehaviour
             }
             if (player == "Enemy")
             {
-                if(reward!=null && gameObject.name == "RatMother"){
+                if(reward!=null && gameObject.name == "RatMother" && InventoryController.GetItemCount("key3") <= 0){
                     reward.SetActive(true);
                     reward.transform.position = gameObject.transform.position;
                 }

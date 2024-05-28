@@ -24,14 +24,21 @@ public class EscapeDoor : MonoBehaviour
     {
         if (PlayerInRange && Input.GetKeyDown(KeyCode.E) && !PlayerMovement.dialogue)
         {
-            Unlocking = true;
+            if
+            (InventoryController.GetItemCount("key1")>0 && InventoryController.GetItemCount("key2")>0 && InventoryController.GetItemCount("key3")>0){
+                Unlocking = true;
+            }
+            else
+            {
+                PromptUI.DisplayPrompt("You are not worthy");
+            }
         }
         if(Unlocking){
             wait-=Time.deltaTime;
             if(wait<=0f)
             {
-                LockSound.SetActive(true);
                 LockSound.SetActive(false);
+                LockSound.SetActive(true);
                 switch(index)
                 {
                     case 0:
@@ -52,7 +59,6 @@ public class EscapeDoor : MonoBehaviour
             }
         }
     }
-
     
     private void OnTriggerEnter(Collider other)
     {
