@@ -11,7 +11,12 @@ public class DialogueUI : MonoBehaviour
     static RawImage box;
     static int index = 0;
     static int left = 0;
+    public GameObject GhostSound;
 
+    public void Start()
+    {
+        GhostSound.SetActive(false);
+    }
     public static void DisplayDialogue(Dialogue dialogue, TMP_Text textLabel, RawImage image)
     {
         displaying = dialogue;
@@ -37,6 +42,16 @@ public class DialogueUI : MonoBehaviour
             box.enabled = true;
             if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.E))
             {
+                if(GhostSound.activeSelf == true)
+                {
+                    GhostSound.SetActive(false);
+                }
+                AudioSource audio = GhostSound.GetComponent<AudioSource>();
+                float pitch = (float)(Random.Range(1, 20) * 0.01 + 1.1);
+                audio.pitch = pitch;
+                GhostSound.SetActive(true);
+
+                print("asfas");
                 left--;
                 index++;
             }

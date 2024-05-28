@@ -134,7 +134,7 @@ public class Health : MonoBehaviour
                 transform.position = position;
                 SavePlayer();
                 data = SaveSystem.LoadEnemy2(this);
-                SaveSystem.SaveEnemy(this);
+                SaveSystem.SaveEnemy(data);
                 ItemsData data3 = SaveSystem.LoadItem2();
                 SaveSystem.SaveItem(data3);
 
