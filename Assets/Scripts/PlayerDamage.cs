@@ -9,15 +9,15 @@ public class PlayerDamage : MonoBehaviour
 
     [SerializeField] private Health playerHealth;
     [SerializeField] private TMP_Text wandLabel;
-    public int maxDuration = 150;
-    public int maxDuration2 = 150;
+    private float maxDuration = 0.3f;
+    private float maxDuration2 = 0.3f;
     public int damage = 1;
     public int heal = 2;
     List<Collider> InRange = new List<Collider>();
     [SerializeField] private ParticleSystem VFX;
     [SerializeField] private ParticleSystem VFX2;
-    public int duration = 0;
-    public int duration2 = 0;
+    private float duration = 0;
+    private float duration2 = 0;
     public GameObject AttackSound;
     public GameObject HealSound;
     // Start is called before the first frame update
@@ -32,21 +32,17 @@ public class PlayerDamage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (duration > 0)
+        duration-=Time.deltaTime;
+        print(duration);
+        if (duration <= 0f)
         {
-            duration--;
-            if (duration <= 0)
-            {
-                VFX.Stop();
-            }
+            print("tu gaidys");
+            VFX.Stop();
         }
-        if (duration2 > 0)
+        duration2-=Time.deltaTime;
+        if (duration2 <= 0f)
         {
-            duration2--;
-            if (duration2 <= 0)
-            {
-                VFX2.Stop();
-            }
+            VFX2.Stop();
         }
         if (Input.GetMouseButtonDown(0) && !PlayerMovement.dialogue)
         {

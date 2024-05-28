@@ -88,8 +88,9 @@ public class InputText : MonoBehaviour
                 print("Aktyvus");
             }
             Solved = true;
+            InventoryController.ObtainItem(item.Item, 1);
             inputField.text = "";
-            Prompt = "your knowledge triumphs";
+            Prompt = "your knowledge triumphs, the key is yours";
             PlayerMovement.dialogue = false;
             inputWindow.SetActive(false);
             Solving = false;

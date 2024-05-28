@@ -6,7 +6,7 @@ using TMPro;
 public class PlayerMovement : MonoBehaviour
 {
     public GameObject FootstepsSound;
-    public int maxStamina = 2000;
+    public int maxStamina = 200;
     public int currentStamina = 0;
     public float staminaCooldown = 0f;
     public float midStaminaCooldown = 0.5f;

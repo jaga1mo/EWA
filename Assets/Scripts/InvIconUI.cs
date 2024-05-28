@@ -28,11 +28,10 @@ public class InvIconUI : MonoBehaviour
             {
                 button.enabled = true;
                 image.enabled = true;
-                if(gameObject.name!="key1" || gameObject.name!="key2" || gameObject.name!="key3"){
+                print(gameObject.name);
+                if(txtLabel != null)
+                {
                     txtLabel.text = items.ToString();
-                }
-                else{
-                    txtLabel.text = "";
                 }
             }
             else
