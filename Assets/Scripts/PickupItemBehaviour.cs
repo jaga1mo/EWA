@@ -23,7 +23,6 @@ public class PickupItemBehaviour : MonoBehaviour
         // Ensure the id is within bounds
         if (id >= 0 && id < data.items.Length)
         {
-            print(gameObject.transform.parent.name + " " + data.items[id]);
             if (data.items[id])
             {
                 ItemObject.SetActive(false);
