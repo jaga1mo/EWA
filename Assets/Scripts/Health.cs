@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static InventoryController;
 
 public class Health : MonoBehaviour
@@ -132,6 +133,8 @@ public class Health : MonoBehaviour
                 SaveSystem.SaveEnemy(this);
                 ItemsData data3 = SaveSystem.LoadItem2();
                 SaveSystem.SaveItem();
+
+                SceneManager.LoadSceneAsync("GameOver", LoadSceneMode.Single);
             }
             if (player == "Enemy")
             {
