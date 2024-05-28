@@ -55,6 +55,7 @@ public class InputText : MonoBehaviour
                     inputWindow.SetActive(false);
                     Solving = false;
                 }
+                print(reward.activeSelf);
             }
         }        
     }
