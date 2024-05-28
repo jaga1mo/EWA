@@ -30,10 +30,10 @@ public class PickupItemBehaviour : MonoBehaviour
         }
 
         SaveSystem.SaveItem2();
-        InvokeRepeating("Tick1", 60, 600);
+        InvokeRepeating("Tick3", 60, 600);
     }
 
-    public void Tick1() 
+    public void Tick3() 
     {
         SaveSystem.SaveItem2();
     }

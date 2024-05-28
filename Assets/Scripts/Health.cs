@@ -26,6 +26,10 @@ public class Health : MonoBehaviour
         player = gameObject.tag;
         if (player == "Enemy")
         {
+            if(gameObject.name != "RatMother")
+            {
+                currentHealth = 2;
+            }
 			EnemyData data = SaveSystem.LoadEnemy(this);
             int id = GetEnemyID(gameObject.name);
             if(data.enemy[id])
@@ -132,7 +136,7 @@ public class Health : MonoBehaviour
                 data = SaveSystem.LoadEnemy2(this);
                 SaveSystem.SaveEnemy(this);
                 ItemsData data3 = SaveSystem.LoadItem2();
-                SaveSystem.SaveItem();
+                SaveSystem.SaveItem(data3);
 
                 SceneManager.LoadSceneAsync("GameOver", LoadSceneMode.Single);
             }

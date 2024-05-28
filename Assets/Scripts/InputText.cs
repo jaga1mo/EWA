@@ -82,6 +82,10 @@ public class InputText : MonoBehaviour
         if (Solution.Equals(inputField.text, System.StringComparison.CurrentCultureIgnoreCase))
         {
             reward.SetActive(true);
+            if(reward.activeSelf)
+            {
+                print("Aktyvus");
+            }
             Solved = true;
             Prompt = "your knowledge triumphs";
             PlayerMovement.dialogue = false;
