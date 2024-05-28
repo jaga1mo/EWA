@@ -9,13 +9,17 @@ public class Health : MonoBehaviour
     private string player;
     public int maxHealth = 10;
     public int currentHealth;
-    Renderer renderer;
+    [SerializeField] GameObject reward;
+    /*Renderer renderer;
     List<Color> oldColors = new List<Color>();
     Material[] newMaterials;
-    public float cooldown = 0f;
+    public float cooldown = 0f;*/
     // Start is called before the first frame update
     void Start()
     {
+        if(reward!=null){
+            reward.SetActive(false);
+        }
         gameObject.SetActive(true);
         currentHealth = maxHealth;
         player = gameObject.tag;
@@ -30,7 +34,7 @@ public class Health : MonoBehaviour
             }
             Tick2();
 	        InvokeRepeating("Tick2", 60, 600);
-            renderer = GetComponent<Renderer>();
+            /*renderer = GetComponent<Renderer>();
             newMaterials = renderer.materials;
             for (var i = 0; i < renderer.materials.Length; i++)
             {
@@ -39,7 +43,7 @@ public class Health : MonoBehaviour
             for (var i = 0; i < renderer.materials.Length; i++)
             {
                 newMaterials[i].color = Color.red;
-            }
+            }*/
         }
 		if(player == "Player")
         {
@@ -63,6 +67,17 @@ public class Health : MonoBehaviour
         {
             SavePlayer();
         }
+        /*if(player == "Enemy"){
+            if(cooldown>0f){
+            cooldown-=Time.deltaTime;
+            }
+            if(cooldown<=0f){
+                for (var i = 0; i < renderer.materials.Length; i++)
+                {
+                    renderer.materials[i].color = oldColors[i];
+                }
+            }
+        }*/
     }
     public void SavePlayer()
     {
@@ -88,11 +103,11 @@ public class Health : MonoBehaviour
     {
         EnemyData data = SaveSystem.LoadEnemy(this);
         currentHealth -= amount;
-        if (player == "Enemy")
+        /*if (player == "Enemy")
         {
-            renderer.materials = newMaterials;
             cooldown = 20f;
-        }
+            renderer.materials = newMaterials;
+        }*/
         if (currentHealth > maxHealth)
         {
             currentHealth = maxHealth;
@@ -120,8 +135,12 @@ public class Health : MonoBehaviour
             }
             if (player == "Enemy")
             {
+                if(reward!=null && gameObject.name == "RatMother"){
+                    reward.SetActive(true);
+                    reward.transform.position = gameObject.transform.position;
+                }
                 gameObject.SetActive(false);
-                print("Enemy killed");
+                print(gameObject.name + " killed");
                 int id = GetEnemyID(gameObject.name);
                 data.SaveEnemyKill(id);
                 SaveSystem.SaveEnemy(this);
@@ -162,6 +181,7 @@ public class Health : MonoBehaviour
             case "Pele (26)":return 26;
             case "Pele (27)":return 27;
             case "Pele (28)":return 28;
+            case "RatMother":return 29;
         }
         return 0;
     }

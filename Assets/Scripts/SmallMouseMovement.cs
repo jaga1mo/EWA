@@ -12,7 +12,10 @@ public class SmallMouseMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnSound.SetActive(false);
+        if(SpawnSound != null)
+        {
+            SpawnSound.SetActive(false);
+        }
         //UnityEngine.AI.NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         //agent.destination = goal.position;
 
@@ -34,7 +37,10 @@ public class SmallMouseMovement : MonoBehaviour
         if(other.name == "PlayerObj")
         {
             PlayerInRange = true;
-            SpawnSound.SetActive(true);
+            if(SpawnSound != null)
+            {
+                SpawnSound.SetActive(true);
+            }
         }
     }
 

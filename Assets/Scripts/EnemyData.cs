@@ -6,11 +6,11 @@ using UnityEngine;
 public class EnemyData
 {
     //public bool[] items = new bool[5];
-    public bool[] enemy = new bool[29];
+    public bool[] enemy = new bool[30];
     
     public EnemyData (Health player)
     {
-        for(int i =0; i < 29; i++)
+        for(int i =0; i < 30; i++)
         {
             enemy[i] = false;
         }
