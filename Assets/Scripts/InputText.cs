@@ -81,8 +81,8 @@ public class InputText : MonoBehaviour
     {
         if (Solution.Equals(inputField.text, System.StringComparison.CurrentCultureIgnoreCase))
         {
-            Solved = true;
             reward.SetActive(true);
+            Solved = true;
             Prompt = "your knowledge triumphs";
             PlayerMovement.dialogue = false;
             inputWindow.SetActive(false);
