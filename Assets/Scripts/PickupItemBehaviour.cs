@@ -4,30 +4,39 @@ using UnityEngine;
 
 public class PickupItemBehaviour : MonoBehaviour
 {
-    [SerializeField] private string Item;
+    [SerializeField] public string Item;
     [SerializeField] private int Amount;
     [SerializeField] private GameObject ItemObject;
     public GameObject OrbSound;
 
     private bool PlayerInRange = false;
+
     // Start is called before the first frame update
     void Start()
     {
         OrbSound.SetActive(false);
         ItemObject.SetActive(true);
+
         ItemsData data = SaveSystem.LoadItem();
         int id = data.GetItemID(gameObject.transform.parent.name);
-        print(gameObject.transform.parent.name + " " + data.items[id]);
-        if(data.items[id])
+
+        // Ensure the id is within bounds
+        if (id >= 0 && id < data.items.Length)
         {
-            ItemObject.SetActive(false);
+            print(gameObject.transform.parent.name + " " + data.items[id]);
+            if (data.items[id])
+            {
+                ItemObject.SetActive(false);
+            }
         }
+
         SaveSystem.SaveItem2();
         InvokeRepeating("Tick1", 60, 600);
     }
-	        
-    public void Tick1() {
-	    SaveSystem.SaveItem2();
+
+    public void Tick1() 
+    {
+        SaveSystem.SaveItem2();
     }
 
     // Update is called once per frame
@@ -39,12 +48,20 @@ public class PickupItemBehaviour : MonoBehaviour
             InventoryController.ObtainItem(Item, Amount);
             PromptUI.DeletePrompt();
             ItemObject.SetActive(false);
+
             int id = data.GetItemID(gameObject.transform.parent.name);
-            data.SavePickedItem(id);
+
+            // Ensure the id is within bounds
+            if (id >= 0 && id < data.items.Length)
+            {
+                data.SavePickedItem(id);
+            }
+
             SaveSystem.SaveItem();
-            print("safas");
+            print("Item picked up");
+
             OrbSound.SetActive(false);
-            if(OrbSound.activeSelf != true)
+            if (!OrbSound.activeSelf)
             {
                 OrbSound.SetActive(true);
             }

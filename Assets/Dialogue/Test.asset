@@ -14,14 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
   - Hi!
-  - You've been sentenced to rot in the dungeon huh?
-  - There isn't really much hope for you here...
-  - If you pick up something shiny, you'll be able to find it in your Inventory by
-    pressing [R].
-  - If you want to escape you'll need to find the three shiny keys that unlock the
-    Grand Seal.
-  - Although...
-  - you will probably die here just like the rest of us.
+  - So You're the latest to be sentenced to rot in the dungeon huh?
+  - wow they even broke your shiny wand..
+  - There isn't really much hope for you here is there...
+  - You might be able to outrun the rats for a bit by holding [Left shift]...
+  - or maybe you can find some scraps to temporarily fix that wand of yours. maybe
+    you'd stand a chance...
+  - well, If you pick up something shiny, you'll be able to find it in your Inventory
+    by pressing [R].
+  - though If you want to escape you'll need to find the three shiny keys that unlock
+    the Grand Seal.
+  - but...
+  - you will likely die here just like the rest of us.
   - Hee hee hee hee hee...
   - HoHoHoHoHo-
   - HAHAHAHAHAHAHHAHAHAHAHHA!!!

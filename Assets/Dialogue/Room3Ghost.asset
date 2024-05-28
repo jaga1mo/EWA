@@ -14,4 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue:
   - 
-  - I see you've already met my little friend.
+  - I see you've already met my little "friend".
+  - can't do much about these nuisances withour a physical body, so thanks for chasing
+    it out
+  - say, do you want to know what this pedestal thing is?
+  - well, frankly i dunno
+  - but if i had to guess i think it holds something important
+  - and there's another like it
+  - there used to be a riddle inscribed on the tablet, but centuries of corrosion
+    have left it ineligible
+  - of course,  i remember it
+  - a sharp mind only dulls in the hands of a fool
+  - 'ahem, so the riddle goes as follows: When I trail you closely, you''re never
+    alone; often in darkness, from light I am thrown. What am I?'
+  - think you can crack this one young one? best of luck to you
+  - '*sigh* a millenia has passed i still haven''t the slightest clue...'

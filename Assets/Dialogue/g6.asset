@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf15b2ed3a14de24bb23e2a00e96d8f1, type: 3}
+  m_Name: g6
+  m_EditorClassIdentifier: 
+  dialogue:
+  - ooh la la what do we have here in this tiny nook
+  - need help with something?
+  - maybe a forgotten riddle?
+  - i know quite a few of those!
+  - 'one of them was: I cast spells and potions, in stories I''m stitched; with a
+    broom and a cat, my image is hitched. Who am I?'
+  - (hmmm... i remember being that one my youth)
+  - 'another riddle went something like this: Some say I''m spoken, some believe
+    I''m cast; bad luck follows, and fortunes are past. What am I?'
+  - (only naughty devils use those...)
+  - 'oh and the final one: I roam freely through walls and rooms, creating tales
+    of fears and dooms. Though I may float, I''m not a boast. What am I?'
+  - (...)
+  - (...)
+  - (...awkward...)

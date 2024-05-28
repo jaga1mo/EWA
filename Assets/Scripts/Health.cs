@@ -59,20 +59,6 @@ public class Health : MonoBehaviour
     }
     void Update()
     {
-        if (player == "Enemy")
-        {
-            if (cooldown > 0f)
-            {
-                cooldown -= Time.deltaTime;
-            }
-            else
-            {
-                for (var i = 0; i < renderer.materials.Length; i++)
-                {
-                    renderer.materials[i].color = oldColors[i];
-                }
-            }
-        }
         if(player == "Player")
         {
             SavePlayer();

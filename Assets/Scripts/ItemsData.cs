@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class ItemsData
 {
-    public bool[] items = new bool[5];
+    public bool[] items = new bool[100];
     
     public ItemsData ()
     {
@@ -44,7 +44,9 @@ public class ItemsData
             case "Item3":return 2;
             case "Item4":return 3;
             case "Item5":return 4;
+            case "Item6":return 5;
+            case "Item7":return 6;
         }
-        return 4;
+        return 5;
     }
 }

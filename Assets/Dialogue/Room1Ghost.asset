@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Room1Ghost
   m_EditorClassIdentifier: 
   dialogue:
-  - You wont survive long enough!
-  - In this room you can find some loot!
+  - feeling brave?
+  - lucky you!
+  - you can find some loot In this room!
